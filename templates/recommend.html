@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    .books-grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .card{
+        border: 2px solid rgb(95, 96, 95);
+        border-radius: 10px;
+        padding: 13px;
+        margin: 22px;
+
+    }
+    .cont{
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        align-items: center;
+        justify-content: left;
+    }
+    .navbar{
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: center;
+        
+    }
+    a{
+        text-decoration: none;
+        color: gray;
+
+    }
+    li{
+        text-decoration: none;
+        list-style-type: none;
+    }
+    .nav {
+        display: flex;
+        gap: 24px;
+    }
+    .text-white{
+        color:white
+    }
+    
+    .type-1{
+        align-items: center;
+        justify-content: center;
+        background-color: grey;
+        color: white;
+        width: 100%;
+margin: 24px;
+
+    }
+    input::placeholder{
+        color: white;
+    }
+    .btn{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 20px;
+        color: white;
+        background-color: rgb(71, 70, 70);
+    }
+</style>
+<body style="background-color:black">
+
+    <nav class="navbar">
+        <a class="">My Book recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="cont">
+                <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                <form action="/recommend_books" method="post">
+                    <input placeholder="Type Book name here..." name="user_input" type="text" class="type-1"><br>
+                    <input type="submit" class="btn">
+                </form>
+            </div>
+
+            <div class="books-grid">
+
+                {% if data %}
+                
+                {% for i in data %}
+                <div class="con" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{i[2]}}">
+                            <p class="text-white">{{i[0]}}</p>
+                            <h4 class="text-white">{{i[1]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

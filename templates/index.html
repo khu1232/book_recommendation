@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+</head>
+<style>
+    .navbar{
+        background-color: rgb(57, 57, 57);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    li{
+        text-decoration: none;
+        list-style-type: none;
+    }
+    .nav {
+        display: flex;
+        gap: 24px;
+    }
+    .text-white{
+        color:white;
+    }
+    a{
+        color: grey;
+        text-decoration: none;
+    }
+    h1{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .books-grid{
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+
+        align-items: center;
+        justify-content: center;
+
+    }
+    
+    .card{
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        padding: 13px;
+        margin: 22px;
+
+    }
+    
+</style>
+<body style="background-color:black">
+
+    <nav class="navbar" >
+        <a class="navbar-brand">My Book recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="cont">
+                <h1 class="text-white" style="font-size:50px">Top 50 Books</h1>
+            </div>
+            <div class="books-grid">
+
+                {% for i in range(book_name|length) %}
+                <div class="con">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{ image[i] }}">
+                            <p class="text-white">{{ book_name[i] }}</p>
+                            <h4 class="text-white">{{ author[i] }}</h4>
+                            <h4 class="text-white">Votes - {{ votes[i] }}</h4>
+                            <h4 class="text-white">Rating - {{ rating[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
